@@ -37,8 +37,14 @@ public class GameRestController extends BaseRestController {
         return ResponseEntity.ok(game);
     }
 
-    @DeleteMapping("games/{id}")
+    @PatchMapping("games/{id}/vote")
     public ResponseEntity<Game> insert(@PathVariable Long id){
+        gameService.vote(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("games/{id}")
+    public ResponseEntity<Game> delete(@PathVariable Long id){
         gameService.delete(id);
         return ResponseEntity.ok().build();
     }
